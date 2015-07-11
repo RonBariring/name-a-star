@@ -1,0 +1,367 @@
+/* Star animation for background images */
+@keyframes STAR-MOVE {
+  from {
+    left: 0;
+    top: 0;
+  }
+  to { 
+    left: -10000px;
+    top: -2000px;
+  }
+}
+
+/* Star animation for stars created via CSS only */
+@keyframes animStar{
+    from{
+      transform: translateY(0px)
+    } 
+      
+    to{
+      transform: translateY(-2000px)
+    }   
+      
+  }
+@keyframes stopStar{
+    from{
+      transform: none
+    } 
+      
+    to{
+      transform: none
+    }   
+      
+  }
+
+#background {
+  background: black url(../images/background.png) repeat 5% 5%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.25;
+  animation     : STAR-MOVE 200s linear infinite;
+  cursor:pointer;
+}
+
+#midground {
+  background: url(../images/midground.png) repeat 20% 20%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.50;
+  animation     : STAR-MOVE 150s linear infinite;
+  cursor:pointer;
+}
+
+#foreground {
+  background: url(../images/foreground.png) repeat 35% 35%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0.75;
+  animation     : STAR-MOVE 100s linear infinite;
+  cursor:pointer;
+}
+
+/* Function to generate stars using CSS */
+@function multiple-box-shadow ($n) {
+  $value: '#{random(2000)}px #{random(2000)}px #FFF';
+  @for $i from 2 through $n
+  {
+    $value: '#{$value} , #{random(2000)}px #{random(2000)}px #FFF';
+  }
+
+  @return unquote($value);
+}
+$shadows-small:  multiple-box-shadow(700);
+$shadows-medium: multiple-box-shadow(200);
+$shadows-big:    multiple-box-shadow(100);
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html{
+  /*height: 100%;*/
+  /*background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);*/
+  background-color: #1B2735;
+  overflow: hidden;
+}
+  
+/* Create stars using css */
+#stars{
+  cursor: pointer;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+  animation     : animStar 50s linear infinite;
+}
+#stars:after{
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-small;
+}
+    
+#stars2{
+  cursor: pointer;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+  animation     : animStar 100s linear infinite;
+}
+ 
+#stars2:after{
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-medium;
+}
+   
+#stars3{
+  cursor: pointer;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-big;
+  animation     : animStar 150s linear infinite;
+}
+  
+  #stars3:after{
+    content: " ";
+    position: absolute;
+    top: 2000px;
+    width: 3px;
+    height: 3px;
+    background: transparent;
+    box-shadow: $shadows-big;
+  }
+
+/* Star bubble modal */
+.bubble{
+  background-image: -webkit-linear-gradient(top, #fdfdfd, #f3f3f4);
+  border-radius: 10px;
+  position: relative;
+  border: 2px solid #a7a8ab;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  max-width: 250px;
+  padding: 1em;
+  text-align: center;
+  opacity: 0.90;
+  p{
+    font-family: helvetica, Arial, sans-serif;
+    font-size: 1.15em;
+    font-weight: normal;  
+    color: #303334;
+  }
+  img{
+    cursor: pointer;
+    top:5px;
+    right:5px;
+    width:25px;
+    height:25px;
+    position:absolute;
+    -webkit-transition:-webkit-transform .25s, opacity .25s;
+          -moz-transition:-moz-transform .25s, opacity .25s;
+                   transition: transform .25s, opacity .25s;
+    opacity:.25;
+  }
+  img:hover{
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    transform: rotate(270deg);
+    opacity:1;
+  }
+}
+
+.star-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px;
+  padding-top: 0;
+}
+
+.hdr h1{
+  display: none;
+}
+
+/* Form styling */
+.feedback-input {
+  color:#3c3c3c;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 0;
+  line-height: 22px;
+  background-color: #fbfbfb;
+  padding: 13px 13px 13px 54px;
+  margin-bottom: 10px;
+  width:100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+  background: #fff;
+  box-shadow: 0;
+  border: 3px solid #3498db;
+  color: #3498db;
+  outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+  color:#30aed6;
+  border:#30aed6 solid 3px;
+}
+
+/* Form icons */
+#name{
+  background-image: url(../images/name.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#name:focus{
+  background-image: url(../images/name.svg);
+  background-size: 30px 30px;
+  background-position: 8px 5px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email{
+  background-image: url(../images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#email:focus{
+  background-image: url(../images/email.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+#description{
+  background-image: url(../images/description.svg);
+  background-size: 30px 30px;
+  background-position: 11px 8px;
+  background-repeat: no-repeat;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    line-height: 150%;
+    resize:vertical;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+  background-color:white;
+}
+
+/* Form submit button */
+#button-blue{
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  float:left;
+  width: 100%;
+  border: #fbfbfb solid 4px;
+  cursor:pointer;
+  background-color: #3498db;
+  color:white;
+  font-size:24px;
+  padding-top:22px;
+  padding-bottom:22px;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+#button-blue:hover{
+  background-color: rgba(0,0,0,0);
+  color: #0493bd;
+}
+  
+.submit:hover {
+  color: #3498db;
+}
+  
+.ease {
+  width: 0px;
+  height: 74px;
+  background-color: #fbfbfb;
+  -webkit-transition: .3s ease;
+  -moz-transition: .3s ease;
+  -o-transition: .3s ease;
+  -ms-transition: .3s ease;
+  transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+@media only screen and (max-width: 580px) {
+  #form-div{
+    left: 3%;
+    margin-right: 3%;
+    width: 88%;
+    margin-left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+/* Sliding form css */
+div.slideBox div.slideup
+{
+  position: absolute;
+  bottom: 0;
+  width: 550px;
+  box-sizing: border-box;
+  text-align: left;
+  height: 2em;
+  padding: 0;
+  float: left;
+  left: 30%;
+  transition: all 1s ease-in-out;
+}
+
+div.slideBox:hover div.slideup, div.slideBox:active div.slideup
+{
+  height: 73%;
+  transition: all 1s ease-in-out;
+}
+
+div.slideBox div.slideup div.form-div
+{
+  background-color:rgba(72,72,72,0.4);
+  padding:35px;
+  padding-right:35px;
+  padding-top:35px;
+  padding-bottom:45px;
+  width: 450px;
+  float: left;
+  left: 50%;
+  position: absolute;
+  margin-top:0em;
+  margin-left: -260px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+}
+
+.hidden{
+  display: none;
+}  

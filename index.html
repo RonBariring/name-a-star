@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Name-a-Star</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" href="star.png">
+        <link rel="stylesheet" href="stylesheets/normalize.css">
+        <link rel="stylesheet" href="stylesheets/main.css">
+        <script src="js/modernizr-2.8.3.min.js"></script>
+
+    </head>
+    <body>
+
+        <header class="hdr">
+          <h1>Name-a-Star</h1>
+        </header>
+
+        <!-- Stars created with css -->
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <!-- End of css stars -->
+
+        <!-- parallax layers -->
+        <!-- Stars created with background images -->
+        <div id="background" class="parallax-layer"></div>
+        <div id="midground" class="parallax-layer"></div>
+        <div id="foreground" class="parallax-layer"></div>
+        <!-- End of background images -->
+        
+        <!-- Star bubble modal placeholder -->
+        <div id="starBubble" class="content star-profiles bubble"></div>
+
+        <!-- Sliding form to create a new star -->
+        <div id="slideWrapper" class="slideBox">
+          <div class="slideup">
+            <div class="form-div">
+                <form class="form" id="starForm" >
+                    <input name="id" type="label" class="hidden" id="starID" />
+                    <p class="name">
+                        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Awesome Star Name" id="name" />
+                    </p>
+
+                    <p class="email-receiver">
+                        <input name="receiver" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="myfriend@domain.com" />
+                    </p>
+
+                    <p class="email-sender">
+                        <input name="sender" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="me@domain.com" />
+                    </p>
+
+                    <p class="text">
+                        <textarea name="description" class="validate[required,length[6,300]] feedback-input" id="description" placeholder="You're so awesome I named a star for you!"></textarea>
+                    </p>
+                    <div class="submit">
+                        <input type="submit" value="Name-a-Star!" id="button-blue"/>
+                        <div class="ease"></div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Star bubble modal handlebars js template -->
+        <script id="stars-template" type="text/x-handlebars-template">
+            <a class="closeButton">
+              <img src="images/x_alt-128.png" alt="X"/>
+            </a>
+            <div class="star {{this.id}}">
+                <h2 class="name">{{this.name}}</h2>
+                <p><em>"{{this.description}}"</em></p>
+            </div>
+        </script>
+
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery.parallax.js"></script>
+        <script src="js/tabletop.js"></script>
+        <script src="js/handlebars-v3.0.3.js"></script>
+        <script src="js/app.js"></script>
+
+    </body>
+</html>
